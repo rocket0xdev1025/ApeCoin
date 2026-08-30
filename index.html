@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApeCoin ($APE) — OG 2013. Just $ape bro.</title>
+  <meta name="description" content="ApeCoin ($APE) on Solana. The original ape from Bitcointalk 2013 is back. Just $ape bro." />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: "#fff8e6",
+              100: "#f6ecd4",
+              200: "#ead7a4",
+              300: "#e0c36e",
+              400: "#d4a84b",
+              500: "#c4a054",
+              600: "#a88432",
+              700: "#8a6a24",
+              800: "#5c3a1e",
+              900: "#3d2410",
+              950: "#1a1008",
+            },
+            jungle: {
+              900: "#0e0b06",
+              800: "#16110a",
+              700: "#24180c",
+            },
+          },
+          fontFamily: {
+            display: ['Bungee', 'cursive'],
+            body: ['Outfit', 'sans-serif'],
+            mono: ['Share Tech Mono', 'monospace'],
+            elite: ['Special Elite', 'cursive'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --gold: #d4a84b;
+      --gold-bright: #f0c96a;
+      --mustard: #c4a054;
+      --tan: #e8d4a0;
+      --cream: #f6ecd4;
+      --brown: #5c3a1e;
+      --bark: #3d2410;
+      --espresso: #1a1008;
+      --ink: #0e0b06;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Outfit, sans-serif;
+      color: var(--cream);
+      background: var(--ink);
+      overflow-x: hidden;
+    }
+
+    .forest-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(14,11,6,0.55) 0%, rgba(26,16,8,0.35) 40%, rgba(14,11,6,0.82) 100%),
+        url("forest-bg.jpg") center / cover no-repeat fixed;
+    }
+
+    .logo-wash {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image: url("logo.png");
+      background-repeat: repeat;
+      background-size: 280px;
+      opacity: 0.07;
+      mix-blend-mode: overlay;
+      filter: sepia(0.4) saturate(1.2);
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e0b06; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #d4a84b, #5c3a1e);
+      border-radius: 99px;
+      border: 2px solid #0e0b06;
+    }
+
+    .gold-ring {
+      box-shadow:
+        0 0 0 3px rgba(212,168,75,0.35),
+        0 0 40px rgba(212,168,75,0.25),
+        0 20px 50px rgba(0,0,0,0.45);
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(36,24,12,0.78), rgba(14,11,6,0.88));
+      border: 1px solid rgba(212,168,75,0.35);
+      box-shadow:
+        inset 0 1px 0 rgba(240,201,106,0.18),
+        0 18px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-buy {
+      background: linear-gradient(180deg, #f0c96a 0%, #d4a84b 45%, #a88432 100%);
+      color: #1a1008;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+      box-shadow:
+        0 8px 0 #5c3a1e,
+        0 16px 30px rgba(0,0,0,0.35),
+        inset 0 2px 0 rgba(255,255,255,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 0 #5c3a1e,
+        0 22px 36px rgba(0,0,0,0.4),
+        inset 0 2px 0 rgba(255,255,255,0.4);
+    }
+    .btn-buy:active {
+      transform: translateY(6px);
+      box-shadow:
+        0 2px 0 #5c3a1e,
+        0 8px 16px rgba(0,0,0,0.3),
+        inset 0 2px 0 rgba(255,255,255,0.25);
+    }
+
+    .btn-ghost {
+      background: rgba(26,16,8,0.7);
+      border: 2px solid #d4a84b;
+      color: #f6ecd4;
+      box-shadow: 0 8px 0 #3d2410;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(92,58,30,0.75);
+      transform: translateY(-2px);
+    }
+
+    .logo-bob {
+      animation: bob 4.5s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .spin-slow {
+      animation: spin 28s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .hero-banner {
+      background-image:
+        linear-gradient(180deg, rgba(14,11,6,0.25) 0%, rgba(14,11,6,0.55) 55%, rgba(14,11,6,0.92) 100%),
+        url("banner.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .leaf {
+      position: fixed;
+      top: -40px;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0.55;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .forum {
+      background: #d9c69a;
+      color: #2a1b0c;
+      border: 4px solid #5c3a1e;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .forum-head {
+      background: linear-gradient(180deg, #6b4423, #3d2410);
+      color: #f6ecd4;
+    }
+    .forum-quote {
+      background: #efe3c4;
+      border-left: 4px solid #8a6a24;
+    }
+
+    .step-num {
+      background: linear-gradient(180deg, #f0c96a, #a88432);
+      color: #1a1008;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .nav-glass {
+      background: rgba(14,11,6,0.72);
+      border-bottom: 1px solid rgba(212,168,75,0.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .ca-chip {
+      background: rgba(14,11,6,0.75);
+      border: 1px solid rgba(212,168,75,0.45);
+    }
+
+    .vine-left, .vine-right {
+      position: absolute;
+      top: 0;
+      width: 90px;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    .vine-left { left: -8px; }
+    .vine-right { right: -8px; transform: scaleX(-1); }
+
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(180deg, #f0c96a, #d4a84b);
+      color: #1a1008;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 80;
+      transition: all 0.25s ease;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .chart-frame {
+      background: linear-gradient(180deg, #3d2410, #1a1008);
+      border: 3px solid #d4a84b;
+      box-shadow:
+        0 0 0 8px rgba(92,58,30,0.5),
+        0 30px 60px rgba(0,0,0,0.45);
+    }
+  </style>
+</head>
+<body class="font-body">
+  <div class="forest-bg"></div>
+  <div class="logo-wash"></div>
+  <div class="grain"></div>
+  <div id="leaves"></div>
+  <div id="toast" class="toast font-display text-sm">APE'D TO CLIPBOARD</div>
+
+  <!-- NAV -->
+  <header class="nav-glass sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 min-w-0">
+        <img src="logo.png" alt="ApeCoin logo" class="w-11 h-11 rounded-full gold-ring" />
+        <div class="leading-none">
+          <div class="font-display text-gold-300 text-lg tracking-wide">APECOIN</div>
+          <div class="font-mono text-[11px] text-gold-200/70 tracking-[0.28em]">$APE</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-gold-100/80">
+        <a href="#about" class="hover:text-gold-300 transition">Lore</a>
+        <a href="#howto" class="hover:text-gold-300 transition">How to Buy</a>
+        <a href="#chart" class="hover:text-gold-300 transition">Chart</a>
+        <a href="https://t.me/ApeCoin_pump" target="_blank" rel="noopener" class="hover:text-gold-300 transition">Telegram</a>
+        <a href="https://x.com/ApeCoin_pump" target="_blank" rel="noopener" class="hover:text-gold-300 transition">X</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy font-display text-xs md:text-sm px-4 py-2 rounded-xl">BUY NOW</a>
+        <button id="menuBtn" class="md:hidden w-10 h-10 rounded-lg border border-gold-500/50 text-gold-200" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 space-y-2 text-gold-100">
+      <a href="#about" class="block py-2">Lore</a>
+      <a href="#howto" class="block py-2">How to Buy</a>
+      <a href="#chart" class="block py-2">Chart</a>
+      <a href="https://t.me/ApeCoin_pump" target="_blank" rel="noopener" class="block py-2">Telegram</a>
+      <a href="https://x.com/ApeCoin_pump" target="_blank" rel="noopener" class="block py-2">X</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero-banner relative min-h-[92vh] flex items-center">
+    <svg class="vine-left hidden lg:block" viewBox="0 0 90 800" fill="none" aria-hidden="true">
+      <path d="M48 0 C20 80 80 140 40 220 C10 300 90 360 50 450 C20 530 80 600 42 800" stroke="#c4a054" stroke-width="6" />
+      <path d="M48 0 C20 80 80 140 40 220 C10 300 90 360 50 450 C20 530 80 600 42 800" stroke="#6b4423" stroke-width="2" />
+      <ellipse cx="22" cy="120" rx="16" ry="9" fill="#8a6a24" transform="rotate(-30 22 120)" />
+      <ellipse cx="70" cy="210" rx="18" ry="10" fill="#a88432" transform="rotate(25 70 210)" />
+      <ellipse cx="18" cy="340" rx="16" ry="9" fill="#c4a054" transform="rotate(-20 18 340)" />
+      <ellipse cx="68" cy="470" rx="18" ry="10" fill="#8a6a24" transform="rotate(30 68 470)" />
+      <ellipse cx="24" cy="620" rx="16" ry="9" fill="#a88432" transform="rotate(-25 24 620)" />
+    </svg>
+    <svg class="vine-right hidden lg:block" viewBox="0 0 90 800" fill="none" aria-hidden="true">
+      <path d="M48 0 C20 80 80 140 40 220 C10 300 90 360 50 450 C20 530 80 600 42 800" stroke="#c4a054" stroke-width="6" />
+      <path d="M48 0 C20 80 80 140 40 220 C10 300 90 360 50 450 C20 530 80 600 42 800" stroke="#6b4423" stroke-width="2" />
+      <ellipse cx="22" cy="120" rx="16" ry="9" fill="#8a6a24" transform="rotate(-30 22 120)" />
+      <ellipse cx="70" cy="210" rx="18" ry="10" fill="#a88432" transform="rotate(25 70 210)" />
+      <ellipse cx="18" cy="340" rx="16" ry="9" fill="#c4a054" transform="rotate(-20 18 340)" />
+      <ellipse cx="68" cy="470" rx="18" ry="10" fill="#8a6a24" transform="rotate(30 68 470)" />
+      <ellipse cx="24" cy="620" rx="16" ry="9" fill="#a88432" transform="rotate(-25 24 620)" />
+    </svg>
+
+    <div class="max-w-5xl mx-auto px-4 py-16 text-center relative z-10">
+      <div class="relative inline-block mb-8">
+        <div class="absolute -inset-6 rounded-full border-2 border-dashed border-gold-400/40 spin-slow"></div>
+        <img src="logo.png" alt="ApeCoin" class="relative w-40 h-40 md:w-56 md:h-56 rounded-full gold-ring logo-bob" />
+      </div>
+
+      <p class="font-elite text-gold-300 text-lg md:text-xl mb-3">og apecoin from 2013 on BTCTalk</p>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-gold-200 drop-shadow-[0_6px_0_#3d2410] leading-none">
+        APECOIN
+      </h1>
+      <div class="mt-3 inline-flex items-center gap-3 bg-gold-900/60 border border-gold-500/40 rounded-full px-5 py-2">
+        <span class="font-mono text-gold-300 tracking-[0.4em] text-sm md:text-base">$APE</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-gold-100/80 text-sm">on Solana</span>
+      </div>
+      <p class="font-elite text-2xl md:text-3xl text-gold-100 mt-6">just $ape bro.</p>
+      <p class="max-w-2xl mx-auto mt-5 text-gold-100/80 text-base md:text-lg leading-relaxed">
+        Before Bored Apes. Before roadmaps. Before suits. There was a coin, a monkey, and a Bitcointalk thread.
+        The original ape never left the jungle — it just learned Solana.
+      </p>
+
+      <div class="mt-8 flex justify-center">
+        <button id="copyCa" class="ca-chip flex items-center gap-3 rounded-full px-4 py-2.5 hover:border-gold-300 transition" title="Copy contract address">
+          <span class="text-[11px] tracking-[0.2em] text-gold-400 font-bold">CA</span>
+          <code id="caText" class="font-mono text-sm md:text-base text-gold-100">TBA</code>
+          <span class="text-gold-300 text-xs font-bold uppercase tracking-wider">Copy</span>
+        </button>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy font-display px-8 py-4 rounded-2xl text-lg w-full sm:w-auto">
+          BUY NOW
+        </a>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener" class="btn-ghost font-display px-8 py-4 rounded-2xl text-lg w-full sm:w-auto">
+          CHART
+        </a>
+      </div>
+
+      <div class="mt-8 flex items-center justify-center gap-5">
+        <a href="https://t.me/ApeCoin_pump" target="_blank" rel="noopener" class="w-14 h-14 rounded-full overflow-hidden gold-ring hover:scale-110 transition" aria-label="Telegram">
+          <img src="tg.png" alt="Telegram" class="w-full h-full object-cover" />
+        </a>
+        <a href="https://x.com/ApeCoin_pump" target="_blank" rel="noopener" class="w-14 h-14 rounded-full overflow-hidden gold-ring hover:scale-110 transition bg-black" aria-label="X / Twitter">
+          <img src="x.png" alt="X" class="w-full h-full object-cover" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="border-y-2 border-gold-500/40 bg-gold-950/80 overflow-hidden">
+    <div class="marquee-track font-display text-gold-300 py-3 text-sm md:text-base tracking-wide">
+      <span class="px-6">JUST $APE BRO</span><span class="text-gold-600">♦</span>
+      <span class="px-6">OG 2013 BTCTALK</span><span class="text-gold-600">♦</span>
+      <span class="px-6">OLD-WORLD ANTHROPOIDCOIN</span><span class="text-gold-600">♦</span>
+      <span class="px-6">NO ROADMAP · NO MERCY</span><span class="text-gold-600">♦</span>
+      <span class="px-6">SOLANA JUNGLE</span><span class="text-gold-600">♦</span>
+      <span class="px-6">ACCEPT NO SUBSTITUTES</span><span class="text-gold-600">♦</span>
+      <span class="px-6">JUST $APE BRO</span><span class="text-gold-600">♦</span>
+      <span class="px-6">OG 2013 BTCTALK</span><span class="text-gold-600">♦</span>
+      <span class="px-6">OLD-WORLD ANTHROPOIDCOIN</span><span class="text-gold-600">♦</span>
+      <span class="px-6">NO ROADMAP · NO MERCY</span><span class="text-gold-600">♦</span>
+      <span class="px-6">SOLANA JUNGLE</span><span class="text-gold-600">♦</span>
+      <span class="px-6">ACCEPT NO SUBSTITUTES</span><span class="text-gold-600">♦</span>
+    </div>
+  </div>
+
+  <!-- LORE -->
+  <section id="about" class="relative py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <p class="font-mono text-gold-400 tracking-[0.3em] text-xs mb-3">01 — LORE</p>
+        <h2 class="font-display text-3xl md:text-5xl text-gold-200 leading-tight">The first ape never died.</h2>
+        <p class="mt-6 text-gold-100/85 leading-relaxed text-lg">
+          In 2013, while the rest of crypto was still arguing about altcoins on
+          <span class="text-gold-300 font-semibold">Bitcointalk</span>, a primate-shaped coin crawled out of the forum
+          and into the jungle. Scrypt. Seasonal rewards. High summer. A community that didn't need a whitepaper —
+          just bananas and block explorers.
+        </p>
+        <p class="mt-4 text-gold-100/85 leading-relaxed text-lg">
+          Years later the internet tried to trademark the ape. Cute. We were already here.
+          <span class="font-elite text-gold-300">ApeCoin ($APE)</span> is the revival of that original energy,
+          now swinging on Solana. No DAO theater. No yacht club. Just the troop, the ticker, and the trees.
+        </p>
+        <div class="mt-8 grid grid-cols-3 gap-3">
+          <div class="panel rounded-2xl p-4 text-center">
+            <div class="font-display text-gold-300 text-2xl">2013</div>
+            <div class="text-xs text-gold-100/70 mt-1">OG genesis</div>
+          </div>
+          <div class="panel rounded-2xl p-4 text-center">
+            <div class="font-display text-gold-300 text-2xl">$APE</div>
+            <div class="text-xs text-gold-100/70 mt-1">ticker forever</div>
+          </div>
+          <div class="panel rounded-2xl p-4 text-center">
+            <div class="font-display text-gold-300 text-2xl">SOL</div>
+            <div class="text-xs text-gold-100/70 mt-1">new jungle</div>
+          </div>
+        </div>
+      </div>
+
+      <article class="forum rounded-sm overflow-hidden font-elite text-[13px] md:text-sm leading-relaxed">
+        <div class="forum-head px-4 py-2 flex items-center justify-between gap-3">
+          <span class="font-display text-[11px] tracking-wider">BITCOIN FORUM</span>
+          <span class="text-[11px] opacity-80">Altcoins » Announcements</span>
+        </div>
+        <div class="px-4 py-2 bg-[#cbb888] text-[11px] font-sans font-semibold tracking-wide">
+          [ANN] ApeCoin — just $ape bro. &nbsp;·&nbsp; Read 14,967 times
+        </div>
+        <div class="grid grid-cols-[88px_1fr] md:grid-cols-[120px_1fr] border-t border-[#5c3a1e]/30">
+          <aside class="bg-[#c4ae7a] p-3 text-center border-r border-[#5c3a1e]/30">
+            <img src="logo.png" alt="" class="w-16 h-16 mx-auto rounded-full border-2 border-[#5c3a1e]" />
+            <div class="mt-2 font-bold">apecoin</div>
+            <div class="text-[10px]">Newbie</div>
+            <div class="text-[10px] mt-2">Activity: 24<br/>Merit: ∞</div>
+          </aside>
+          <div class="p-4 bg-[#e7d7ae]">
+            <div class="text-[11px] mb-3 opacity-70">March 14, 2013, 06:46:56 PM &nbsp; #1</div>
+            <p class="mb-3">Re-announcing this coin for several reasons:</p>
+            <ul class="list-disc pl-5 space-y-1 mb-3">
+              <li>The seasonal block reward is in <b>high summer</b> now.</li>
+              <li>The loyal troop feels a revival is long overdue.</li>
+              <li>It's an ape. It's a coin. That's the whole pitch.</li>
+            </ul>
+            <div class="forum-quote p-3 italic mb-3">
+              "The ApeCoin is an Old-World AnthropoidCoin, more specifically a clade of TaillessCatarrhinePrimateCoin."
+              <div class="not-italic text-[11px] mt-1 opacity-70">— ScienceCoin, 2013</div>
+            </div>
+            <p>No roadmap. No utility slide. If you get it, you get it.</p>
+            <p class="mt-3 text-lg">just $ape bro.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="howto" class="relative py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="font-mono text-gold-400 tracking-[0.3em] text-xs mb-3">02 — HOW TO BUY</p>
+        <h2 class="font-display text-3xl md:text-5xl text-gold-200">Swing into $APE</h2>
+        <p class="mt-4 text-gold-100/80">Four moves. One jungle. Buy $APE on Solana with SOL — no PhD required.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <article class="panel rounded-3xl p-6 md:p-7 relative overflow-hidden">
+          <div class="step-num font-display w-12 h-12 rounded-2xl grid place-items-center text-xl mb-4">1</div>
+          <h3 class="font-display text-xl text-gold-300 mb-2">Get a Solana wallet</h3>
+          <p class="text-gold-100/80 leading-relaxed">
+            Install <b>Phantom</b> or <b>Solflare</b> on your phone or browser. Write down the seed phrase like it is a banana stash — lose it and the troop cannot help you.
+          </p>
+        </article>
+
+        <article class="panel rounded-3xl p-6 md:p-7">
+          <div class="step-num font-display w-12 h-12 rounded-2xl grid place-items-center text-xl mb-4">2</div>
+          <h3 class="font-display text-xl text-gold-300 mb-2">Load it with SOL</h3>
+          <p class="text-gold-100/80 leading-relaxed">
+            Buy SOL on any major exchange or on-ramp, then send it to your wallet address. Keep a little extra SOL for network fees so the swap doesn't stall in the vines.
+          </p>
+        </article>
+
+        <article class="panel rounded-3xl p-6 md:p-7">
+          <div class="step-num font-display w-12 h-12 rounded-2xl grid place-items-center text-xl mb-4">3</div>
+          <h3 class="font-display text-xl text-gold-300 mb-2">Open the jungle swap</h3>
+          <p class="text-gold-100/80 leading-relaxed">
+            Hit <b>Buy Now</b> to open pump.fun with SOL already set as input. Paste / confirm the $APE contract (copy it above). Always match the CA — fake apes lurk in the brush.
+          </p>
+        </article>
+
+        <article class="panel rounded-3xl p-6 md:p-7">
+          <div class="step-num font-display w-12 h-12 rounded-2xl grid place-items-center text-xl mb-4">4</div>
+          <h3 class="font-display text-xl text-gold-300 mb-2">Swap SOL → $APE</h3>
+          <p class="text-gold-100/80 leading-relaxed">
+            Connect the wallet, choose how much SOL to ape, confirm the swap, and you're in the troop. That's it.
+            <span class="font-elite text-gold-300"> just $ape bro.</span>
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy font-display px-8 py-4 rounded-2xl text-lg">BUY $APE NOW</a>
+        <button data-copy-ca class="btn-ghost font-display px-8 py-4 rounded-2xl text-lg">COPY CA</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHART -->
+  <section id="chart" class="relative py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <p class="font-mono text-gold-400 tracking-[0.3em] text-xs mb-3">03 — LIVE JUNGLE</p>
+          <h2 class="font-display text-3xl md:text-5xl text-gold-200">Dexscreener</h2>
+          <p class="mt-3 text-gold-100/75">Watch the candles grow like vines. Chart opens in a new tab too.</p>
+        </div>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener" class="btn-ghost font-display px-6 py-3 rounded-xl text-sm">OPEN CHART ↗</a>
+      </div>
+      <div class="chart-frame rounded-2xl overflow-hidden">
+        <iframe
+          title="ApeCoin Dexscreener chart"
+          src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+          class="w-full h-[460px] md:h-[620px]"
+          style="border:0"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- TROOP CTA -->
+  <section class="relative py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="panel rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <img src="logo.png" alt="" class="absolute -right-10 -bottom-10 w-48 opacity-15 pointer-events-none" />
+        <h2 class="font-display text-3xl md:text-5xl text-gold-200">Join the troop</h2>
+        <p class="font-elite text-xl text-gold-300 mt-3">The jungle is loud. Be louder.</p>
+        <p class="max-w-xl mx-auto mt-4 text-gold-100/80">
+          Memes, raids, and zero corporate apes. Telegram for the campfire. X for the howl.
+        </p>
+        <div class="mt-8 flex items-center justify-center gap-5">
+          <a href="https://t.me/ApeCoin_pump" target="_blank" rel="noopener" class="w-16 h-16 rounded-full overflow-hidden gold-ring hover:scale-110 transition">
+            <img src="tg.png" alt="Telegram" class="w-full h-full object-cover" />
+          </a>
+          <a href="https://x.com/ApeCoin_pump" target="_blank" rel="noopener" class="w-16 h-16 rounded-full overflow-hidden gold-ring hover:scale-110 transition bg-black">
+            <img src="x.png" alt="X" class="w-full h-full object-cover" />
+          </a>
+        </div>
+        <div class="mt-8">
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy inline-block font-display px-10 py-4 rounded-2xl text-lg">BUY NOW</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-gold-500/25 py-10 mt-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="ApeCoin" class="w-10 h-10 rounded-full" />
+        <div>
+          <div class="font-display text-gold-300">APECOIN · $APE</div>
+          <div class="font-elite text-sm text-gold-100/70">just $ape bro. since 2013.</div>
+        </div>
+      </div>
+      <p class="text-xs text-gold-100/50 max-w-md text-center md:text-right">
+        $APE is a meme coin with no intrinsic value or expectation of financial return.
+        This is not financial advice. DYOR. Verify the contract. Don't get banana-slipped by copycats.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const CA = "TBA";
+
+    function copyCa() {
+      const done = () => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(CA).then(done).catch(() => fallbackCopy(done));
+      } else {
+        fallbackCopy(done);
+      }
+    }
+
+    function fallbackCopy(done) {
+      const area = document.createElement("textarea");
+      area.value = CA;
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      area.remove();
+      done();
+    }
+
+    document.getElementById("copyCa").addEventListener("click", copyCa);
+    document.querySelectorAll("[data-copy-ca]").forEach((btn) => btn.addEventListener("click", copyCa));
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.add("hidden")));
+
+    const leafSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#c4a054"><path d="M12 2C8 6 4 10 5 16c3 1 6-1 7-4 1 3 4 5 7 4 1-6-3-10-7-14z"/></svg>`;
+    const wrap = document.getElementById("leaves");
+    for (let i = 0; i < 14; i++) {
+      const el = document.createElement("div");
+      el.className = "leaf";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = 9 + Math.random() * 12 + "s";
+      el.style.animationDelay = Math.random() * 10 + "s";
+      el.style.width = 14 + Math.random() * 16 + "px";
+      el.innerHTML = leafSvg;
+      wrap.appendChild(el);
+    }
+  </script>
+</body>
+</html>
